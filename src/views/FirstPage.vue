@@ -1,17 +1,17 @@
 <template>
   <div class="about">
-    <AssetForm />
+    <MainPage />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import AssetForm from "@/components/AssetForm.vue";
+import MainPage from "@/components/MainPage.vue";
 
 export default {
   name: "About",
   components: {
-    AssetForm
+    MainPage
   }
 };
 </script>
