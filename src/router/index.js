@@ -1,14 +1,14 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home
+    name: "FirstPage",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/FirstPage.vue")
   },
   {
     path: "/about",
@@ -24,12 +24,28 @@ const routes = [
     name: "FirstPage",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/FirstPage.vue")
+  },
+  {
+    path: "/person",
+    name: "Person",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Person.vue")
+  },
+  {
+    path: "/apartment",
+    name: "Apartment",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Apartment.vue")
+  },
+  {
+    path: "/score",
+    name: "Score",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Score.vue")
   }
 ];
 
 const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
   routes
 });
 

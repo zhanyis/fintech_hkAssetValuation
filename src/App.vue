@@ -1,42 +1,38 @@
 <template>
   <div id="app">
-    <el-menu
-      :default-active="activeIndex2"
-      class="el-menu-demo"
-      mode="horizontal"
-      @select="handleSelect"
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#ffd04b"
-    >
-      <el-menu-item index="1">
-        <router-link to="/">Home</router-link>
-      </el-menu-item>
-      <el-submenu index="2">
-        <template slot="title">我的工作台</template>
-        <el-menu-item index="2-1"
-          ><router-link to="/firstpage">Start</router-link></el-menu-item
-        >
-        <el-menu-item index="2-2">选项2</el-menu-item>
-        <el-menu-item index="2-3">选项3</el-menu-item>
-        <el-submenu index="2-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="2-4-1">选项1</el-menu-item>
-          <el-menu-item index="2-4-2">选项2</el-menu-item>
-          <el-menu-item index="2-4-3">选项3</el-menu-item>
+    <el-container style="height:100%">
+      <el-menu
+        :default-active="activeIndex2"
+        class="el-menu-demo"
+        mode="horizontal"
+        @select="handleSelect"
+        background-color="#545c64"
+        text-color="#fff"
+        active-text-color="#ffd04b"
+      >
+        <el-menu-item index="1">
+          <router-link to="/">首页</router-link>
+        </el-menu-item>
+        <el-submenu index="2">
+          <template slot="title">资产评估</template>
+          <el-menu-item index="2-1">
+            <router-link to="/about">汽车</router-link>
+          </el-menu-item>
+          <el-menu-item index="2-2">
+            <router-link to="/apartment">房产</router-link>
+          </el-menu-item>
         </el-submenu>
-      </el-submenu>
-      <el-menu-item index="3" disabled>消息中心</el-menu-item>
-      <el-menu-item index="4">
-        <router-link to="/about">About</router-link>
-      </el-menu-item>
-    </el-menu>
-    <el-container>
+        <!--<el-menu-item index="3">
+          <router-link to="/score">Start</router-link>
+        </el-menu-item>-->
+        <el-menu-item index="3">
+          <router-link to="/person">History Search</router-link>
+        </el-menu-item>
+      </el-menu>
       <el-main>
-        <div id="nav"></div>
         <router-view />
       </el-main>
-      <el-footer>Footer</el-footer>
+      <el-footer>COMP7300 FINTECH</el-footer>
     </el-container>
   </div>
 </template>
@@ -58,21 +54,13 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+#app,
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+  width: 100%;
 }
 
 .el-header,
@@ -83,30 +71,15 @@ export default {
   line-height: 60px;
 }
 
-.el-aside {
-  background-color: #d3dce6;
-  color: #333;
-  text-align: center;
-  line-height: 200px;
-}
-
 .el-main {
   background-color: #e9eef3;
   color: #333;
   text-align: center;
   line-height: 160px;
+  height: 100%;
 }
 
 body > .el-container {
   margin-bottom: 40px;
-}
-
-.el-container:nth-child(5) .el-aside,
-.el-container:nth-child(6) .el-aside {
-  line-height: 260px;
-}
-
-.el-container:nth-child(7) .el-aside {
-  line-height: 320px;
 }
 </style>
