@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>历史记录</h1>
+    <h1>{{ $t("message.history") }}</h1>
     <HistoryCard
       v-for="history in historys"
       :key="history.index"

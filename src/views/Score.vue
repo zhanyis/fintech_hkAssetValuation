@@ -1,8 +1,10 @@
 <template>
   <div>
     <div class="scoreContainer">
-      <h3>你的资产价值为</h3>
-      <div class="scoreValue">{{ $route.query.amount }}元</div>
+      <h3>{{ $t("message.yourAssetValue") }}</h3>
+      <div class="scoreValue">
+        {{ $route.query.amount }}{{ $t("message.unit") }}
+      </div>
     </div>
     <MainPage />
   </div>

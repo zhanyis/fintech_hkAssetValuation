@@ -3,12 +3,16 @@
     <el-row :gutter="24">
       <el-col :span="12">
         <el-card shadow="hover">
-          <router-link to="/about">汽车评估</router-link>
+          <router-link to="/about">{{
+            $t("message.carValuation")
+          }}</router-link>
         </el-card>
       </el-col>
       <el-col :span="12">
         <el-card shadow="hover"
-          ><router-link to="/apartment">房产评估</router-link></el-card
+          ><router-link to="/apartment">{{
+            $t("message.apartmentValuation")
+          }}</router-link></el-card
         >
       </el-col>
     </el-row>

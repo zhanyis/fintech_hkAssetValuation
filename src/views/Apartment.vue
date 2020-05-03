@@ -2,12 +2,12 @@
   <div class="about">
     <el-form
       label-position="right"
-      label-width="150px"
+      label-width="200px"
       :model="form"
       size="medium"
       style="margin-top:20px"
     >
-      <el-form-item style="margin-top:20px" label="使用面积(平方尺)">
+      <el-form-item style="margin-top:20px" :label="$t('message.area')">
         <el-input
           v-model="form.areas"
           type="number"
@@ -17,14 +17,14 @@
       <!--<el-form-item label="楼层数">
         <el-input v-model="form.height" type="number" style="width:400px"></el-input>
       </el-form-item>-->
-      <el-form-item label="楼龄">
+      <el-form-item :label="$t('message.age')">
         <el-input
           v-model="form.ages"
           type="number"
           style="width:400px"
         ></el-input>
       </el-form-item>
-      <el-form-item label="地区">
+      <el-form-item :label="$t('message.region')">
         <el-cascader :options="options" v-model="value" clearable></el-cascader>
       </el-form-item>
     </el-form>
@@ -33,7 +33,7 @@
       icon="el-icon-search"
       :loading="load"
       @click="shows(form)"
-      >查询</el-button
+      >{{ $t("message.search") }}</el-button
     >
     <!-- <div>{{money}}</div> -->
   </div>
@@ -51,214 +51,14 @@ export default {
       },
       value: "",
       // show: false,
-      load: false,
-      options: [
-        {
-          value: "kowloon",
-          label: "九龙",
-          children: [
-            {
-              value: 9472,
-              label: "观塘"
-            },
-            {
-              value: 12401,
-              label: "牛池湾"
-            },
-            {
-              value: 11513,
-              label: "牛头角"
-            },
-            {
-              value: 12053,
-              label: "新蒲崗/慈雲山"
-            },
-            {
-              value: 10487,
-              label: "橫頭磡/黃大仙"
-            },
-            {
-              value: 13385,
-              label: "油塘/茶果嶺"
-            },
-            {
-              value: 11433,
-              label: "九龍城"
-            },
-            {
-              value: 21291,
-              label: "啟德"
-            },
-            {
-              value: 13051,
-              label: "旺角/大角咀"
-            },
-            {
-              value: 10195,
-              label: "油麻地/京士柏"
-            },
-            {
-              value: 11960,
-              label: "荔枝角"
-            },
-            {
-              value: 13813,
-              label: "長沙灣/深水埗"
-            },
-            {
-              value: 15337,
-              label: "西南九龍"
-            },
-            {
-              value: 13340,
-              label: "石硤尾/又一村"
-            },
-            {
-              value: 0,
-              label: "九龍塘"
-            },
-            {
-              value: 10810,
-              label: "何文田"
-            },
-            {
-              value: 12746,
-              label: "尖沙咀"
-            },
-            {
-              value: 13286,
-              label: "紅磡/土瓜灣"
-            }
-          ]
-        },
-        {
-          value: "HongKong",
-          label: "香港岛",
-          children: [
-            {
-              value: 7628,
-              label: "赤柱"
-            },
-            {
-              value: "15367",
-              label: "大谭/石澳"
-            },
-            {
-              value: "13329",
-              label: "香港仔/鸭脷洲"
-            },
-            {
-              value: "15691",
-              label: "薄扶林"
-            },
-            {
-              value: "14217",
-              label: "坚尼地城"
-            },
-            {
-              value: "16134",
-              label: "西半山"
-            },
-            {
-              value: "16988",
-              label: "上环/西盘营"
-            },
-            {
-              value: "12697",
-              label: "湾仔"
-            },
-            {
-              value: "19442",
-              label: "跑马地/黄泥涌"
-            },
-            {
-              value: "14077",
-              label: "铜锣湾"
-            },
-            {
-              value: "13314",
-              label: "肖其湾/西湾河"
-            },
-            {
-              value: "7908",
-              label: "小西湾"
-            },
-            {
-              value: "14530",
-              label: "鲗鱼涌"
-            },
-            {
-              value: "14055",
-              label: "北角"
-            },
-            {
-              value: "12699",
-              label: "柴湾"
-            }
-          ]
-        },
-        {
-          value: "New Territories",
-          label: "新界",
-          children: [
-            {
-              value: "8917",
-              label: "离岛"
-            },
-            {
-              value: "10420",
-              label: "大埔"
-            },
-            {
-              value: "10915",
-              label: "沙田"
-            },
-            {
-              value: "10003",
-              label: "西贡"
-            },
-            {
-              value: "12612",
-              label: "马鞍山"
-            },
-            {
-              value: "11003",
-              label: "元朗"
-            },
-            {
-              value: "7305",
-              label: "天水围"
-            },
-            {
-              value: "11339",
-              label: "屯门"
-            },
-            {
-              value: "10586",
-              label: "荃湾"
-            },
-            {
-              value: "9679",
-              label: "葵涌"
-            },
-            {
-              value: "13096",
-              label: "青衣"
-            },
-            {
-              value: "9854",
-              label: "上水/粉领"
-            }
-          ]
-        }
-      ]
+      load: false
     };
   },
   methods: {
     shows(form) {
       if (this.form.areas == "" || this.form.ages == "" || this.value == "") {
         Message({
-          message: "不能为空！",
+          message: this.$t("message.hello"),
           type: "warning"
         });
         return;
@@ -283,6 +83,208 @@ export default {
     }
   },
   computed: {
+    options() {
+      return [
+        {
+          value: "kowloon",
+          label: this.$t("option.Kowloon"),
+          children: [
+            {
+              value: 9472,
+              label: this.$t("option.KwunTong")
+            },
+            {
+              value: 12401,
+              label: this.$t("option.NgauChiWan")
+            },
+            {
+              value: 11513,
+              label: this.$t("option.NgauTauKok")
+            },
+            {
+              value: 12053,
+              label: this.$t("option.SanPoKong")
+            },
+            {
+              value: 10487,
+              label: this.$t("option.WongTaiSin")
+            },
+            {
+              value: 13385,
+              label: this.$t("option.YauTong")
+            },
+            {
+              value: 11433,
+              label: this.$t("option.KowloonCity")
+            },
+            {
+              value: 21291,
+              label: this.$t("option.KaiTak")
+            },
+            {
+              value: 13051,
+              label: this.$t("option.MongKok")
+            },
+            {
+              value: 10195,
+              label: this.$t("option.YauMaTei")
+            },
+            {
+              value: 11960,
+              label: this.$t("option.LaiChiKok")
+            },
+            {
+              value: 13813,
+              label: this.$t("option.CheungShaWan")
+            },
+            {
+              value: 15337,
+              label: this.$t("option.SouthwestKowloon")
+            },
+            {
+              value: 13340,
+              label: this.$t("option.ShekKipMei")
+            },
+            {
+              value: 10810,
+              label: this.$t("option.HoManTin")
+            },
+            {
+              value: 12746,
+              label: this.$t("option.TsimShaTsui")
+            },
+            {
+              value: 13286,
+              label: this.$t("option.HungHom")
+            }
+          ]
+        },
+        {
+          value: "HongKong",
+          label: this.$t("option.HongKong"),
+          children: [
+            {
+              value: 7628,
+              label: this.$t("option.Stanley")
+            },
+            {
+              value: 15367,
+              label: this.$t("option.ShekO")
+            },
+            {
+              value: 13329,
+              label: this.$t("option.Aberdeen")
+            },
+            {
+              value: 15691,
+              label: this.$t("option.PokFuLam")
+            },
+            {
+              value: 14217,
+              label: this.$t("option.KennedyTown")
+            },
+            {
+              value: 16134,
+              label: this.$t("option.MidLevelsWest")
+            },
+            {
+              value: 16988,
+              label: this.$t("option.SheungWan")
+            },
+            {
+              value: 12697,
+              label: this.$t("option.Wanchai")
+            },
+            {
+              value: 19442,
+              label: this.$t("option.HappyValley")
+            },
+            {
+              value: 14077,
+              label: this.$t("option.CausewayBay")
+            },
+            {
+              value: 13314,
+              label: this.$t("option.SauKeiWan")
+            },
+            {
+              value: 7908,
+              label: this.$t("option.SiuSaiWan")
+            },
+            {
+              value: 14530,
+              label: this.$t("option.QuarryBay")
+            },
+            {
+              value: 14055,
+              label: this.$t("option.NorthPoint")
+            },
+            {
+              value: 12699,
+              label: this.$t("option.ChaiWan")
+            }
+          ]
+        },
+        {
+          value: "New Territories",
+          label: this.$t("option.NewTerritories"),
+          children: [
+            {
+              value: 8917,
+              label: this.$t("option.OutlyingIsland")
+            },
+            {
+              value: 10420,
+              label: this.$t("option.TaiPo")
+            },
+            {
+              value: 12918,
+              label: this.$t("option.TsengKwanO")
+            },
+            {
+              value: 10915,
+              label: this.$t("option.ShaTin")
+            },
+            {
+              value: 10003,
+              label: this.$t("option.SaiKung")
+            },
+            {
+              value: 12612,
+              label: this.$t("option.MaOnShan")
+            },
+            {
+              value: 11003,
+              label: this.$t("option.YuenLong")
+            },
+            {
+              value: 7305,
+              label: this.$t("option.TinShuiWan")
+            },
+            {
+              value: 11339,
+              label: this.$t("option.TuenMun")
+            },
+            {
+              value: 10586,
+              label: this.$t("option.TsuenWan")
+            },
+            {
+              value: 9679,
+              label: this.$t("option.KwaiChung")
+            },
+            {
+              value: 13096,
+              label: this.$t("option.TsingYi")
+            },
+            {
+              value: 9854,
+              label: this.$t("option.SheungShui")
+            }
+          ]
+        }
+      ];
+    },
     money() {
       let apartmentAge = (70 - this.form.ages) / 70;
       return (

@@ -1,6 +1,9 @@
 <template>
   <div class="about">
     <el-carousel :interval="5000" arrow="always">
+      <el-carousel-item>
+        <img style="height: 100%" src="@/assets/Asset.jpg" />
+      </el-carousel-item>
       <el-carousel-item v-for="item in items" :key="item.id">
         <h3>{{ item.message }}</h3>
       </el-carousel-item>

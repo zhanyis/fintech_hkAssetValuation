@@ -2,42 +2,41 @@
   <div>
     <el-form
       label-position="right"
-      label-width="100px"
+      label-width="200px"
       :model="form"
       size="medium"
       style="margin-top:20px"
     >
-      <el-form-item style="margin-top:20px" label="购买价格">
+      <el-form-item style="margin-top:20px" :label="$t('message.buy')">
         <el-input
           v-model="form.buy"
           type="number"
           style="width:400px"
         ></el-input>
       </el-form-item>
-      <el-form-item label="现在价格">
+      <el-form-item :label="$t('message.now')">
         <el-input
           v-model="form.now"
           type="number"
           style="width:400px"
         ></el-input>
       </el-form-item>
-      <el-form-item label="使用里程">
+      <el-form-item :label="$t('message.miles')">
         <el-input
           v-model="form.miles"
           type="number"
           style="width:400px"
         ></el-input>
       </el-form-item>
-      <el-form-item label="购入年份">
+      <el-form-item :label="$t('message.year')">
         <el-date-picker
           v-model="form.year"
           type="month"
           value-format="yyyy-MM"
-          placeholder="选择月"
         ></el-date-picker>
       </el-form-item>
-      <el-form-item label="机构鉴定结果">
-        <el-select v-model="form.value" placeholder="请选择">
+      <el-form-item :label="$t('message.evaluate')">
+        <el-select v-model="form.value" :placeholder="$t('message.select')">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -46,8 +45,8 @@
           ></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="保值率">
-        <el-select v-model="form.value1" placeholder="请选择">
+      <el-form-item :label="$t('message.retention')">
+        <el-select v-model="form.value1" :placeholder="$t('message.select')">
           <el-option
             v-for="item in options1"
             :key="item.value"
@@ -83,47 +82,51 @@ export default {
         value1: "",
         year: ""
       },
-      options: [
-        {
-          value: 0.02,
-          label: "优"
-        },
-        {
-          value: 0.01,
-          label: "良"
-        },
-        {
-          value: 0,
-          label: "一般"
-        },
-        {
-          value: -0.01,
-          label: "差"
-        },
-        {
-          value: -0.02,
-          label: "较差"
-        }
-      ],
-      options1: [
-        {
-          value: 0.02,
-          label: "畅销"
-        },
-        {
-          value: 0.01,
-          label: "一般"
-        },
-        {
-          value: 0.005,
-          label: "滞销"
-        }
-      ],
       // show: false,
       load: false
     };
   },
   computed: {
+    options() {
+      return [
+        {
+          value: 0.02,
+          label: this.$t("option.excellen")
+        },
+        {
+          value: 0.01,
+          label: this.$t("option.good")
+        },
+        {
+          value: 0,
+          label: this.$t("option.general")
+        },
+        {
+          value: -0.01,
+          label: this.$t("option.poor")
+        },
+        {
+          value: -0.02,
+          label: this.$t("option.veryBad")
+        }
+      ];
+    },
+    options1() {
+      return [
+        {
+          value: 0.02,
+          label: this.$t("option.sellWell")
+        },
+        {
+          value: 0.01,
+          label: this.$t("option.general")
+        },
+        {
+          value: 0.005,
+          label: this.$t("option.unsalable")
+        }
+      ];
+    },
     money: function() {
       let oldbuy = parseFloat(this.form.buy);
       let nowbuy = parseFloat(this.form.now);
@@ -133,7 +136,11 @@ export default {
       let tMonth = myDate.getMonth();
       let selMonth = this.form.year.split("-");
       if (selMonth[0] >= tYear && selMonth[1] > tMonth + 1) {
-        return `你的年份超越现在`;
+        Message({
+          message: this.$t("message.exceedYear"),
+          type: "warning"
+        });
+        return;
       }
       let b1, b2;
       let diffmonth = (tYear - selMonth[0]) * 12 + tMonth + 1 - selMonth[1];
@@ -174,9 +181,12 @@ export default {
         this.form.value1 == ""
       ) {
         Message({
-          message: "不能为空！",
+          message: this.$t("message.hello"),
           type: "warning"
         });
+        return;
+      }
+      if (this.money === undefined) {
         return;
       }
       // this.show = false;

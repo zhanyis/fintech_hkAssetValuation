@@ -5,34 +5,46 @@
         :default-active="activeIndex2"
         class="el-menu-demo"
         mode="horizontal"
-        @select="handleSelect"
         background-color="#545c64"
         text-color="#fff"
         active-text-color="#ffd04b"
       >
         <el-menu-item index="1">
-          <router-link to="/">首页</router-link>
+          <router-link to="/">{{ $t("message.mainPage") }}</router-link>
         </el-menu-item>
         <el-submenu index="2">
-          <template slot="title">资产评估</template>
+          <template slot="title">{{ $t("message.assetValuation") }}</template>
           <el-menu-item index="2-1">
-            <router-link to="/about">汽车</router-link>
+            <router-link to="/about">{{ $t("message.car") }}</router-link>
           </el-menu-item>
           <el-menu-item index="2-2">
-            <router-link to="/apartment">房产</router-link>
+            <router-link to="/apartment">{{
+              $t("message.apartment")
+            }}</router-link>
           </el-menu-item>
         </el-submenu>
         <!--<el-menu-item index="3">
           <router-link to="/score">Start</router-link>
         </el-menu-item>-->
         <el-menu-item index="3">
-          <router-link to="/person">History Search</router-link>
+          <router-link to="/person">{{ $t("message.history") }}</router-link>
+        </el-menu-item>
+        <el-menu-item index="4">
+          <el-button
+            type="primary"
+            @click="changelang()"
+            round
+            icon="el-icon-refresh"
+            >{{ $t("message.changelang") }}</el-button
+          >
         </el-menu-item>
       </el-menu>
       <el-main>
         <router-view />
       </el-main>
-      <el-footer>COMP7300 FINTECH</el-footer>
+      <el-footer>
+        COMP7300 FINTECH
+      </el-footer>
     </el-container>
   </div>
 </template>
@@ -46,8 +58,14 @@ export default {
     };
   },
   methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
+    changelang() {
+      if (this.$i18n.locale === "cn") {
+        this.$i18n.locale = "en";
+        localStorage.setItem("lang", "en");
+      } else {
+        this.$i18n.locale = "cn";
+        localStorage.setItem("lang", "cn");
+      }
     }
   }
 };
