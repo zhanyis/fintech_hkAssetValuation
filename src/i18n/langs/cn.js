@@ -2,6 +2,9 @@ import zhLocale from "element-ui/lib/locale/lang/zh-CN";
 
 const cn = {
   message: {
+    evaluateSystem: "资产评估系统",
+    pleaseEnterVehicle: "请输入车辆信息",
+    pleaseEnterApart: "请输入房产信息",
     hello: "不能为空",
     exceedYear: "不能输入未来",
     mainPage: "首页",

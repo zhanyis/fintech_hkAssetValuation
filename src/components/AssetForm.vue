@@ -1,69 +1,80 @@
 <template>
   <div>
-    <el-form
-      label-position="right"
-      label-width="200px"
-      :model="form"
-      size="medium"
-      style="margin-top:20px"
-    >
-      <el-form-item style="margin-top:20px" :label="$t('message.buy')">
-        <el-input
-          v-model="form.buy"
-          type="number"
-          style="width:400px"
-        ></el-input>
-      </el-form-item>
-      <el-form-item :label="$t('message.now')">
-        <el-input
-          v-model="form.now"
-          type="number"
-          style="width:400px"
-        ></el-input>
-      </el-form-item>
-      <el-form-item :label="$t('message.miles')">
-        <el-input
-          v-model="form.miles"
-          type="number"
-          style="width:400px"
-        ></el-input>
-      </el-form-item>
-      <el-form-item :label="$t('message.year')">
-        <el-date-picker
-          v-model="form.year"
-          type="month"
-          value-format="yyyy-MM"
-        ></el-date-picker>
-      </el-form-item>
-      <el-form-item :label="$t('message.evaluate')">
-        <el-select v-model="form.value" :placeholder="$t('message.select')">
-          <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          ></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item :label="$t('message.retention')">
-        <el-select v-model="form.value1" :placeholder="$t('message.select')">
-          <el-option
-            v-for="item in options1"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          ></el-option>
-        </el-select>
-      </el-form-item>
-    </el-form>
-    <el-button
-      type="primary"
-      icon="el-icon-search"
-      :loading="load"
-      @click="shows(form)"
-      >查询</el-button
-    >
-    <!-- <div v-if="show">你的车子价值为： {{ money }}</div> -->
+    <el-card>
+      <el-alert
+        :title="$t('message.pleaseEnterVehicle')"
+        type="info"
+        center
+        show-icon
+        :closable="false"
+      ></el-alert>
+      <el-form
+        label-position="top"
+        label-width="200px"
+        :model="form"
+        size="medium"
+      >
+        <el-form-item
+          style="margin-top:20px"
+          :label="$t('message.buy')"
+          required
+        >
+          <el-input
+            v-model="form.buy"
+            type="number"
+            style="width:400px"
+          ></el-input>
+        </el-form-item>
+        <el-form-item :label="$t('message.now')" required>
+          <el-input
+            v-model="form.now"
+            type="number"
+            style="width:400px"
+          ></el-input>
+        </el-form-item>
+        <el-form-item :label="$t('message.miles')" required>
+          <el-input
+            v-model="form.miles"
+            type="number"
+            style="width:400px"
+          ></el-input>
+        </el-form-item>
+        <el-form-item :label="$t('message.year')" required>
+          <el-date-picker
+            v-model="form.year"
+            type="month"
+            value-format="yyyy-MM"
+          ></el-date-picker>
+        </el-form-item>
+        <el-form-item :label="$t('message.evaluate')" required>
+          <el-select v-model="form.value" :placeholder="$t('message.select')">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item :label="$t('message.retention')" required>
+          <el-select v-model="form.value1" :placeholder="$t('message.select')">
+            <el-option
+              v-for="item in options1"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+      </el-form>
+      <el-button
+        type="primary"
+        icon="el-icon-search"
+        :loading="load"
+        @click="shows(form)"
+        >{{ $t("message.search") }}</el-button
+      >
+    </el-card>
   </div>
 </template>
 

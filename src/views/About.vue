@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div>
     <AssetForm />
   </div>
 </template>
@@ -16,13 +16,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.about {
-  background: #fff;
-  border-radius: 2px;
-  padding: 20px 40px 0px;
-  margin: 2rem;
-  position: relative;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-}
-</style>
+<style scoped></style>

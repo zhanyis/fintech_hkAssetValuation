@@ -1,41 +1,56 @@
 <template>
-  <div class="about">
-    <el-form
-      label-position="right"
-      label-width="200px"
-      :model="form"
-      size="medium"
-      style="margin-top:20px"
-    >
-      <el-form-item style="margin-top:20px" :label="$t('message.area')">
-        <el-input
-          v-model="form.areas"
-          type="number"
-          style="width:400px"
-        ></el-input>
-      </el-form-item>
-      <!--<el-form-item label="楼层数">
+  <div>
+    <el-card>
+      <el-alert
+        :title="$t('message.pleaseEnterApart')"
+        type="info"
+        center
+        show-icon
+        :closable="false"
+      ></el-alert>
+      <el-form
+        label-position="top"
+        label-width="200px"
+        :model="form"
+        size="medium"
+      >
+        <el-form-item
+          style="margin-top:20px"
+          :label="$t('message.area')"
+          required
+        >
+          <el-input
+            v-model="form.areas"
+            type="number"
+            style="width:400px"
+          ></el-input>
+        </el-form-item>
+        <!--<el-form-item label="楼层数">
         <el-input v-model="form.height" type="number" style="width:400px"></el-input>
-      </el-form-item>-->
-      <el-form-item :label="$t('message.age')">
-        <el-input
-          v-model="form.ages"
-          type="number"
-          style="width:400px"
-        ></el-input>
-      </el-form-item>
-      <el-form-item :label="$t('message.region')">
-        <el-cascader :options="options" v-model="value" clearable></el-cascader>
-      </el-form-item>
-    </el-form>
-    <el-button
-      type="primary"
-      icon="el-icon-search"
-      :loading="load"
-      @click="shows(form)"
-      >{{ $t("message.search") }}</el-button
-    >
-    <!-- <div>{{money}}</div> -->
+        </el-form-item>-->
+        <el-form-item :label="$t('message.age')" required>
+          <el-input
+            v-model="form.ages"
+            type="number"
+            style="width:400px"
+          ></el-input>
+        </el-form-item>
+        <el-form-item :label="$t('message.region')" required>
+          <el-cascader
+            :options="options"
+            v-model="value"
+            clearable
+          ></el-cascader>
+        </el-form-item>
+      </el-form>
+      <el-button
+        type="primary"
+        icon="el-icon-search"
+        :loading="load"
+        @click="shows(form)"
+        >{{ $t("message.search") }}</el-button
+      >
+    </el-card>
   </div>
 </template>
 
@@ -287,10 +302,10 @@ export default {
     },
     money() {
       let apartmentAge = (70 - this.form.ages) / 70;
-      return (
+      let amount =
         Math.round(apartmentAge * this.value[1] * this.form.areas * 1.5 * 100) /
-        100
-      );
+        100;
+      return amount > 0 ? amount : 0;
     },
     index: function() {
       return this.$store.state.historys.length;
@@ -298,14 +313,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.about {
-  background: #fff;
-  border-radius: 2px;
-  padding: 20px 40px 0px;
-  margin: 2rem;
-  position: relative;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-}
-</style>

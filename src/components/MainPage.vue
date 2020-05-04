@@ -1,24 +1,19 @@
 <template>
   <div>
-    <el-row :gutter="24">
-      <el-col :span="12">
-        <el-card shadow="hover">
-          <router-link to="/about">{{
-            $t("message.carValuation")
-          }}</router-link>
-        </el-card>
-      </el-col>
-      <el-col :span="12">
-        <el-card shadow="hover"
-          ><router-link to="/apartment">{{
-            $t("message.apartmentValuation")
-          }}</router-link></el-card
-        >
-      </el-col>
-    </el-row>
-    <el-card shadow="hover" style="height: 200px">
-      广告位招租！！！
-    </el-card>
+    <div class="flex-box">
+      <div class="car-card" @click="herfcar">
+        <i class="iconfont icon-cheliang"></i>
+        <span>
+          {{ $t("message.carValuation") }}
+        </span>
+      </div>
+      <div class="apart-card" @click="herfapart">
+        <i class="iconfont icon-fangwufangchan"></i>
+        <span>
+          {{ $t("message.apartmentValuation") }}
+        </span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -27,16 +22,37 @@ export default {
   methods: {
     herfcar() {
       this.$router.push({ path: "/about" });
+    },
+    herfapart() {
+      this.$router.push({ path: "/apartment" });
     }
   }
 };
 </script>
 
 <style scoped>
-.el-row {
-  margin-bottom: 20px;
+.car-card:hover {
+  background-color: lightcyan;
 }
-.el-col {
-  border-radius: 4px;
+.apart-card:hover {
+  background-color: lightgreen;
+}
+.apart-card,
+.car-card {
+  height: 150px;
+  background-color: #fff;
+  width: 48%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 24px;
+}
+.flex-box {
+  display: flex;
+  justify-content: space-between;
 }
 </style>

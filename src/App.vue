@@ -1,50 +1,70 @@
 <template>
   <div id="app">
-    <el-container style="height:100%">
-      <el-menu
-        :default-active="activeIndex2"
-        class="el-menu-demo"
-        mode="horizontal"
-        background-color="#545c64"
-        text-color="#fff"
-        active-text-color="#ffd04b"
-      >
-        <el-menu-item index="1">
-          <router-link to="/">{{ $t("message.mainPage") }}</router-link>
-        </el-menu-item>
-        <el-submenu index="2">
-          <template slot="title">{{ $t("message.assetValuation") }}</template>
-          <el-menu-item index="2-1">
-            <router-link to="/about">{{ $t("message.car") }}</router-link>
-          </el-menu-item>
-          <el-menu-item index="2-2">
-            <router-link to="/apartment">{{
-              $t("message.apartment")
-            }}</router-link>
-          </el-menu-item>
-        </el-submenu>
-        <!--<el-menu-item index="3">
-          <router-link to="/score">Start</router-link>
-        </el-menu-item>-->
-        <el-menu-item index="3">
-          <router-link to="/person">{{ $t("message.history") }}</router-link>
-        </el-menu-item>
-        <el-menu-item index="4">
-          <el-button
-            type="primary"
-            @click="changelang()"
-            round
-            icon="el-icon-refresh"
-            >{{ $t("message.changelang") }}</el-button
+    <el-container class="home-container">
+      <el-header>
+        <span class="head-title"
+          ><i class="iconfont icon-qian"></i
+          >{{ $t("message.evaluateSystem") }}</span
+        >
+        <div>
+          <div class="lang-icon" @click="changeen">
+            <i class="iconfont icon-yingwen"></i>
+          </div>
+          <div class="lang-icon" @click="changezh">
+            <i class="iconfont icon-zhongwen"></i>
+          </div>
+        </div>
+      </el-header>
+      <el-container>
+        <el-aside :width="isCollaspe ? '64px' : '200px'">
+          <div class="toggle-button" @click="toggleCollaspe">
+            <i class="iconfont icon-ellipsis"></i>
+          </div>
+          <el-menu
+            default-active="2"
+            class="el-menu-vertical-demo"
+            background-color="#005580"
+            text-color="#fff"
+            active-text-color="#ffd04b"
+            router
+            :collapse="isCollaspe"
+            :collapse-transition="false"
           >
-        </el-menu-item>
-      </el-menu>
-      <el-main>
-        <router-view />
-      </el-main>
-      <el-footer>
-        COMP7300 FINTECH
-      </el-footer>
+            <el-menu-item index="/">
+              <i class="iconfont icon-all"></i>
+              <span slot="title">{{ $t("message.mainPage") }}</span>
+            </el-menu-item>
+            <el-submenu>
+              <template slot="title">
+                <i class="iconfont icon-qian1"></i>
+                <span>{{ $t("message.assetValuation") }}</span>
+              </template>
+              <el-menu-item-group>
+                <el-menu-item index="/about"
+                  ><i class="iconfont icon-cheliang"></i
+                  >{{ $t("message.car") }}</el-menu-item
+                >
+                <el-menu-item index="/apartment"
+                  ><i class="iconfont icon-fangwufangchan"></i
+                  >{{ $t("message.apartment") }}</el-menu-item
+                >
+              </el-menu-item-group>
+            </el-submenu>
+            <el-menu-item index="/person">
+              <i class="iconfont icon-history"></i>
+              <span slot="title">{{ $t("message.history") }}</span>
+            </el-menu-item>
+            <el-menu-item index="4">
+              <i class="el-icon-setting"></i>
+              <span slot="title">导航四</span>
+            </el-menu-item>
+          </el-menu>
+        </el-aside>
+        <el-main>
+          <router-view />
+        </el-main>
+      </el-container>
+      <el-footer>COMP7300 FINTECH</el-footer>
     </el-container>
   </div>
 </template>
@@ -53,51 +73,85 @@
 export default {
   data() {
     return {
-      activeIndex: "1",
-      activeIndex2: "1"
+      isCollaspe: false
     };
   },
   methods: {
-    changelang() {
-      if (this.$i18n.locale === "cn") {
-        this.$i18n.locale = "en";
-        localStorage.setItem("lang", "en");
-      } else {
+    changezh() {
+      if (this.$i18n.locale === "en") {
         this.$i18n.locale = "cn";
         localStorage.setItem("lang", "cn");
       }
+    },
+    changeen() {
+      if (this.$i18n.locale === "cn") {
+        this.$i18n.locale = "en";
+        localStorage.setItem("lang", "en");
+      }
+    },
+    toggleCollaspe() {
+      this.isCollaspe = !this.isCollaspe;
     }
   }
 };
 </script>
 
 <style>
-#app,
 html,
-body {
+body,
+#app,
+.home-container {
+  /*设置内部填充为0，几个布局元素之间没有间距*/
   padding: 0px;
+  /*外部间距也是如此设置*/
   margin: 0px;
+  /*统一设置高度为100%*/
   height: 100%;
-  width: 100%;
 }
 
 .el-header,
 .el-footer {
-  background-color: #b3c0d1;
+  background-color: #00aaff;
   color: #333;
   text-align: center;
   line-height: 60px;
 }
 
-.el-main {
-  background-color: #e9eef3;
-  color: #333;
-  text-align: center;
-  line-height: 160px;
-  height: 100%;
+.el-header {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 0;
+  align-items: center;
+  color: #fff;
 }
 
-body > .el-container {
-  margin-bottom: 40px;
+.el-aside {
+  background-color: #005580;
+  color: #333;
+  text-align: center;
+  line-height: 200px;
+}
+
+.el-menu {
+  border-right: none;
+}
+
+.el-main {
+  background-color: #e6e6ff;
+  color: #333;
+  text-align: center;
+}
+.toggle-button {
+  background-color: #9999ff;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+}
+.head-title {
+  font-size: 24px;
+}
+.lang-icon {
+  display: inline-block;
+  margin: 2px;
 }
 </style>

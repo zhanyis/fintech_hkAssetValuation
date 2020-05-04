@@ -2,6 +2,9 @@ import enLocale from "element-ui/lib/locale/lang/en";
 
 const en = {
   message: {
+    evaluateSystem: "Asset Evaluation System",
+    pleaseEnterVehicle: "Please Enter Vehicle Information",
+    pleaseEnterApart: "Please Enter Apartment Information",
     hello: "Can Not Be Empty",
     exceedYear: "Please Do not Enter Future Year",
     mainPage: "Main",
