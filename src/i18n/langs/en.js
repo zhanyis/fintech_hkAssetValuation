@@ -2,6 +2,16 @@ import enLocale from "element-ui/lib/locale/lang/en";
 
 const en = {
   message: {
+    tucao: "Click here for comment!",
+    name: "Name",
+    commentArea: "Comment",
+    plzname: "Please Enter Your Name",
+    plzcomment: "Please Enter Your Comment",
+    submit: "Submit",
+    reset: "Reset",
+    plzgiveComment: "Please leave your valuable comments",
+    regionMiss: "Some missing regions due to no data record",
+    comment: "If you feel good, Please click the smile :)  ",
     evaluateSystem: "Asset Evaluation System",
     pleaseEnterVehicle: "Please Enter Vehicle Information",
     pleaseEnterApart: "Please Enter Apartment Information",

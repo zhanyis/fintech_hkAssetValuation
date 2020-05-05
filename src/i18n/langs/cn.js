@@ -2,6 +2,16 @@ import zhLocale from "element-ui/lib/locale/lang/zh-CN";
 
 const cn = {
   message: {
+    tucao: "点这吐槽",
+    name: "名字",
+    commentArea: "评论",
+    plzname: "请输入您的名字",
+    plzcomment: "请输入您的评论",
+    submit: "提交",
+    reset: "重置",
+    plzgiveComment: "请留下您的宝贵意见",
+    regionMiss: "部分地区缺失因为没有该地区的数据",
+    comment: "觉得好用就给个好评吧!!  ",
     evaluateSystem: "资产评估系统",
     pleaseEnterVehicle: "请输入车辆信息",
     pleaseEnterApart: "请输入房产信息",

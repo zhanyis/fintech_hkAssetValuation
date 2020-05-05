@@ -7,7 +7,6 @@
       :form="history"
     ></HistoryCard>
     <!-- <button @click="detail"></button>-->
-    <Comment></Comment>
   </div>
 </template>
 

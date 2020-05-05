@@ -7,14 +7,18 @@
       </div>
     </div>
     <MainPage />
+    <Like></Like>
   </div>
 </template>
 
 <script>
 import MainPage from "@/components/MainPage.vue";
+import Like from "@/components/Like.vue";
+
 export default {
   components: {
-    MainPage
+    MainPage,
+    Like
   }
 };
 </script>

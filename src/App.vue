@@ -54,9 +54,9 @@
               <i class="iconfont icon-history"></i>
               <span slot="title">{{ $t("message.history") }}</span>
             </el-menu-item>
-            <el-menu-item index="4">
-              <i class="el-icon-setting"></i>
-              <span slot="title">导航四</span>
+            <el-menu-item index="/discuss">
+              <i class="el-icon-edit-outline"></i>
+              <span slot="title">{{ $t("message.commentArea") }}</span>
             </el-menu-item>
           </el-menu>
         </el-aside>

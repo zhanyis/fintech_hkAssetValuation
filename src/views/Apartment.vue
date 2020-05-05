@@ -43,6 +43,13 @@
           ></el-cascader>
         </el-form-item>
       </el-form>
+      <el-alert
+        center
+        show-icon
+        style="margin-bottom: 10px"
+        :title="$t('message.regionMiss')"
+        type="warning"
+      ></el-alert>
       <el-button
         type="primary"
         icon="el-icon-search"

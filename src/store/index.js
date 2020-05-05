@@ -39,7 +39,18 @@ export default new Vuex.Store({
         money: 9133714.29
       }
     ],
-    isLogin: false
+    historyComments: [
+      {
+        name: "PUBLIC BONK",
+        desc: "每月平息低至0.11%",
+        date: "2020-5-3 19:50:22"
+      },
+      {
+        name: "H5BC",
+        desc: "欢迎来我们这里贷款，利息低至7里",
+        date: "2020-5-2 13:50:23"
+      }
+    ]
   },
   mutations: {
     ADD_TO_HISTORY(state, payload) {
@@ -50,6 +61,9 @@ export default new Vuex.Store({
       state.historys = state.historys.filter(
         history => history.index !== historyId
       );
+    },
+    ADD_TO_COMMENT(state, payload) {
+      state.historyComments.unshift(payload.detail);
     }
   },
   actions: {},
