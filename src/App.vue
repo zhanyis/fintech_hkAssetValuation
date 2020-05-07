@@ -21,9 +21,10 @@
             <i class="iconfont icon-ellipsis"></i>
           </div>
           <el-menu
+            style="border-right:none"
             default-active="2"
             class="el-menu-vertical-demo"
-            background-color="#005580"
+            background-color="#8585e0"
             text-color="#fff"
             active-text-color="#ffd04b"
             router
@@ -111,8 +112,8 @@ body,
 
 .el-header,
 .el-footer {
-  background-color: #00aaff;
-  color: #333;
+  background-color: #99c2ff;
+  color: #fff;
   text-align: center;
   line-height: 60px;
 }
@@ -126,14 +127,10 @@ body,
 }
 
 .el-aside {
-  background-color: #005580;
+  background-color: #8585e0;
   color: #333;
   text-align: center;
   line-height: 200px;
-}
-
-.el-menu {
-  border-right: none;
 }
 
 .el-main {
@@ -142,7 +139,7 @@ body,
   text-align: center;
 }
 .toggle-button {
-  background-color: #9999ff;
+  background-color: #e6ecff;
   line-height: 24px;
   text-align: center;
   cursor: pointer;

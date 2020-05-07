@@ -74,12 +74,14 @@ export default {
   border-radius: 15px;
   font-size: 60px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 .adv-text {
   width: 100%;
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-  color: red;
+  color: #8585e0;
 }
 </style>
