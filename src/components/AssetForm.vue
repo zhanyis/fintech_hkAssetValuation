@@ -109,7 +109,7 @@ export default {
           label: this.$t("option.good")
         },
         {
-          value: 0,
+          value: 0.00000001,
           label: this.$t("option.general")
         },
         {

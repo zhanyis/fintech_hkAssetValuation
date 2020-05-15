@@ -32,31 +32,34 @@
             :collapse-transition="false"
           >
             <el-menu-item index="/">
-              <i class="iconfont icon-all"></i>
+              <i style="color:#fff" class="iconfont icon-all"></i>
               <span slot="title">{{ $t("message.mainPage") }}</span>
             </el-menu-item>
             <el-submenu>
               <template slot="title">
-                <i class="iconfont icon-qian1"></i>
+                <i style="color:#fff" class="iconfont icon-qian1"></i>
                 <span>{{ $t("message.assetValuation") }}</span>
               </template>
               <el-menu-item-group>
                 <el-menu-item index="/about"
-                  ><i class="iconfont icon-cheliang"></i
+                  ><i style="color:#fff" class="iconfont icon-cheliang"></i
                   >{{ $t("message.car") }}</el-menu-item
                 >
                 <el-menu-item index="/apartment"
-                  ><i class="iconfont icon-fangwufangchan"></i
+                  ><i
+                    style="color:#fff"
+                    class="iconfont icon-fangwufangchan"
+                  ></i
                   >{{ $t("message.apartment") }}</el-menu-item
                 >
               </el-menu-item-group>
             </el-submenu>
             <el-menu-item index="/person">
-              <i class="iconfont icon-history"></i>
+              <i style="color:#fff" class="iconfont icon-history"></i>
               <span slot="title">{{ $t("message.history") }}</span>
             </el-menu-item>
             <el-menu-item index="/discuss">
-              <i class="el-icon-edit-outline"></i>
+              <i style="color:#fff" class="el-icon-edit-outline"></i>
               <span slot="title">{{ $t("message.commentArea") }}</span>
             </el-menu-item>
           </el-menu>

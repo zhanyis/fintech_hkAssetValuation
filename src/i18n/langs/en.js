@@ -48,7 +48,7 @@ const en = {
     general: "general",
     poor: "poor",
     veryBad: "very bad",
-    sellWell: "sell vell",
+    sellWell: "sell Well",
     unsalable: "unsalable",
     Kowloon: "Kowloon",
     KwunTong: "Kwun Tong",
